@@ -1,0 +1,32 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "Mastering react in detail",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milan-2604/Namaste_React.git"
+  },
+  "keywords": [
+    "Milan",
+    "react"
+  ],
+  "author": "Milan Oli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milan-2604/Namaste_React/issues"
+  },
+  "homepage": "https://github.com/milan-2604/Namaste_React#readme",
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
