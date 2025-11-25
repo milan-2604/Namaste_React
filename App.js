@@ -1,23 +1,52 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-//React functional component
-const HeadingComponent = () => (
-  <h1 id="heading-component">This is React functional component</h1>
-);
+/*
+-Header
+ -Logo
+ -NavItems
+-Body
+ -Search
+ -RestrauntContainer
+  -RestrauntCard
+-Footer
+ -Copyright
+ -Links
+ -Adress
+ -Contact
+*/
 
-// const heading = React.createElement("h1",{id:"heading"},"Namaste React");
+//Header Component
+const Header = () => {
+  return (
+    <div className="header">
+      <img
+        className="logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Foodlogo.svg/1027px-Foodlogo.svg.png"
+        width={100}
+      />
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About us</li>
+          <li>Contact us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-//using jsx which is html or xml like syntax
-const jsxHeading = (
-  <div>
-    <h1 id="heading">Namaste React</h1>
-    <HeadingComponent /> {/* This is Component Composition*/}
-  </div>
-); //normal js engine cant understand this jsx syntax
-//your bundler parcel has Babel which is transpiling this jsx syntax so it can be executed properly
-//jsx=>Babel transpiles this into React.createElement=>ReactElement js object => HTMLElement(render)
+const AppLayout = () => {
+  return (
+    <div id="app">
+      {/* Header */}
+      <Header />
+      {/* Body */}
+      {/* Footer */}
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(heading);
-root.render(jsxHeading);
+root.render(<AppLayout />);
