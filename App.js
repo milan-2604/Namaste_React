@@ -38,15 +38,104 @@ const Header = () => {
   );
 };
 
+//Res obj // Mock data simulating multiple restaurant cards
+const resObj = 
+ {
+  cards: [
+    {
+      id: "611642",
+      name: "Biriyani Hut",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/12/20/a1363779-f4d5-4af6-af29-8b16f200ff1e_68781.jpg",
+      areaName: "AMC Road",
+      costForTwo: "₹250 for two",
+      cuisines: ["Biryani", "Chinese", "Beverages"],
+      avgRating: 4.3,
+      totalRatingsString: "232",
+      sla: {
+        deliveryTime: 27,
+        lastMileTravel: 1.9,
+        slaString: "25-30 mins",
+      },
+      isOpen: true,
+      ctaLink: "https://www.swiggy.com/restaurants/biriyani-hut-611642",
+    },
+    {
+      id: "612345",
+      name: "Pizza Paradise",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/10/05/pizza-paradise-12345.jpg",
+      areaName: "City Center",
+      costForTwo: "₹400 for two",
+      cuisines: ["Italian", "Pizza", "Fast Food"],
+      avgRating: 4.6,
+      totalRatingsString: "510",
+      sla: {
+        deliveryTime: 30,
+        lastMileTravel: 2.5,
+        slaString: "28-33 mins",
+      },
+      isOpen: true,
+      ctaLink: "https://www.swiggy.com/restaurants/pizza-paradise-612345",
+    },
+    {
+      id: "613456",
+      name: "Sushi Express",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/11/12/sushi-express-613456.jpg",
+      areaName: "Tech Park",
+      costForTwo: "₹600 for two",
+      cuisines: ["Japanese", "Sushi", "Seafood"],
+      avgRating: 4.8,
+      totalRatingsString: "128",
+      sla: {
+        deliveryTime: 35,
+        lastMileTravel: 4.2,
+        slaString: "33-38 mins",
+      },
+      isOpen: true,
+      ctaLink: "https://www.swiggy.com/restaurants/sushi-express-613456",
+    },
+    {
+      id: "614567",
+      name: "Green Salad Corner",
+      cloudinaryImageId:
+        "RX_THUMBNAIL/IMAGES/VENDOR/2024/09/18/green-salad-corner-614567.jpg",
+      areaName: "Market Street",
+      costForTwo: "₹200 for two",
+      cuisines: ["Salads", "Healthy Food", "Wraps"],
+      avgRating: 4.2,
+      totalRatingsString: "87",
+      sla: {
+        deliveryTime: 20,
+        lastMileTravel: 1.2,
+        slaString: "18-22 mins",
+      },
+      isOpen: true,
+      ctaLink: "https://www.swiggy.com/restaurants/green-salad-corner-614567",
+    },
+  ],
+};
+
+const CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/";
+
+
 //RestrauntCard Component
-const RestrauntCard = (props) => {
+const RestrauntCard = ({ resData }) => {
   return (
     <div className="res-card">
-      <img className="res-image" src={props.resImg} />
-      <h3>{props.name}</h3>
-      <h4 className="rating">{props.rating}</h4>
-      <h4 className="cuisine">{props.cuisine}</h4>
-      <h4 className="del-time">{props.delTime}</h4>
+      <img
+        className="res-image"
+        src={
+          CDN_URL +
+          resData.cloudinaryImageId
+        }
+      />
+      <h3>{resData.name}</h3>
+      <h4 className="rating">{resData.avgRating}</h4>
+      <h4 className="cuisine">{resData.cuisines.join()}</h4>
+      <h4 className="del-time">{resData.sla.deliveryTime} minutes</h4>
     </div>
   );
 };
@@ -58,13 +147,10 @@ const Body = () => {
       <div className="search">Search</div>
       <div className="res-container">
         {/* RestrauntCard */}
-        <RestrauntCard
-          name="Megna foods"
-          resImg="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/%22Hyderabadi_Dum_Biryani%22.jpg/500px-%22Hyderabadi_Dum_Biryani%22.jpg"
-          rating="4.5 stars"
-          cuisine="Biryani, North Indian, Asian"
-          delTime="38 minutes"
-        />
+        {/* <RestrauntCard resData={resObj} /> */}
+        {resObj.cards.map((data)=>(
+          <RestrauntCard key={data.id} resData={data} />
+        ))}
       </div>
     </div>
   );
